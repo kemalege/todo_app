@@ -27,13 +27,13 @@ function App() {
           <div className="bg-transparent bg-gradient-to-r from-slate-400/25 to-todo-purple/25">
             <div className="flex flex-col px-5 py-5">
               
-              <nav className="flex w-fit h-fit mx-auto justify-center mt-4 border-t border-x font-note text-todo-white transition duration-300">
-                <NavLink className={({ isActive }) => isActive ? "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-  bg-todo-purple" : "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-yellow"} to="/">Notes</NavLink>
-                <NavLink className={({ isActive }) => isActive ? "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-  bg-todo-purple" : "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-yellow"} to="/checkeddone">Checked</NavLink>
+              <nav className="flex mx-auto w-48 mt-4 border-t border-x font-note text-todo-white transition duration-300">
+                <NavLink className={({ isActive }) => isActive ? "flex basis-1/2 justify-center p-0.5 border-r outline-offset-0 hover:text-todo-yellow bg-todo-purple" : "flex basis-1/2 justify-center p-0.5 border-r outline-offset-0 hover:text-todo-yellow"} to="/todo_app">Notes</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "flex basis-1/2 justify-center p-0.5 outline-offset-0 hover:text-todo-yellow bg-todo-purple" : "flex basis-1/2 justify-center p-0.5 outline-offset-0 hover:text-todo-yellow"} to="/checkeddone">Completed</NavLink>
               </nav>
 
               <Routes>
-                <Route path="/" element={<Notes />} />
+                <Route path="/todo_app" element={<Notes />} />
                 <Route path="/checkeddone" element={<CheckedNotes />} />
               </Routes>
             </div>
