@@ -1,25 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useState, FormEvent} from "react";
+import Notes from "./components/Notes";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
+import CheckedNotes from "./components/CheckedNotes";
+import AddNoteBoard from "./components/AddNoteBoard";
+
 
 function App() {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="bg-todo-purple h-screen bg-gradient-to-t from-violet-500 to-todo-purple">
+        <header className="wp bg-black">
+          <h1 className="inline-block pl-10 py-2 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500 transition duration-200">
+            TODO
+          </h1>
+        </header>
+        <AddNoteBoard />
+        <div className="pl-0.5 pr-0.5 py-0.5 max-w-lg mt-4 mx-2 lg:mx-auto bg-transparent bg-gradient-to-r from-todo-grey/25 to-slate-500/25 shadow-lg">
+          <div className="bg-transparent bg-gradient-to-r from-slate-400/25 to-todo-purple/25">
+            <div className="flex flex-col px-5 py-5">
+              
+              <nav className="flex w-fit h-fit mx-auto justify-center mt-4 border-t border-x font-note text-todo-white transition duration-300">
+                <NavLink className={({ isActive }) => isActive ? "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-  bg-todo-purple" : "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-yellow"} to="/">Notes</NavLink>
+                <NavLink className={({ isActive }) => isActive ? "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-  bg-todo-purple" : "flex justify-center p-0.5 border-r w-20 outline-offset-0 hover:text-todo-yellow"} to="/checkeddone">Checked</NavLink>
+              </nav>
+
+              <Routes>
+                <Route path="/" element={<Notes />} />
+                <Route path="/checkeddone" element={<CheckedNotes />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
 
